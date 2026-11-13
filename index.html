@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cyber Maze: Pursuit Protocol</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main id="app">
+    <section id="menu" class="panel active">
+      <div class="brand">CYBER MAZE</div>
+      <div class="subtitle">PURSUIT PROTOCOL</div>
+      <p class="intro">INFILTRACIÓN // RED MILITAR // SECTOR NEXUS</p>
+      <label class="name-field">OPERADOR <input id="playerName" maxlength="14" placeholder="JUGADOR" autocomplete="off"></label>
+      <div class="menu-buttons">
+        <button data-action="start">▶ INICIAR MISIÓN</button>
+        <button data-action="howto">◈ CÓMO JUGAR</button>
+        <button data-action="editor">⌘ EDITOR DE NIVELES</button>
+        <button data-action="ranking">▣ RANKING</button>
+        <button data-action="credits">◉ CRÉDITOS</button>
+      </div>
+      <audio id="bgMusic" preload="auto" loop aria-hidden="true"><source src="./assets/audio/cybermaze-theme.mp3" type="audio/mpeg"></audio>
+      <div class="controls">
+        <span>WASD / FLECHAS · MOVER</span><span>ESPACIO / ENTER · ATAQUE</span><span>P · PAUSA</span><span>R · REINICIAR</span><span>F2 · DEBUG</span><span>M · AUDIO</span>
+      </div>
+    </section>
+
+    <section id="game" class="screen hidden">
+      <div id="hud">
+        <span id="hudScore">PUNTOS: 0</span><span id="hudLives">VIDAS: 3</span>
+        <span id="hudLevel">NIVEL: 1</span><span id="hudProgress">DATOS: 0/0</span>
+        <span id="hudCombo">COMBO: x1</span><span id="hudState">PLAYING</span>
+      </div>
+      <div class="power-wrap"><span>ENERGÍA</span><div class="power-track"><i id="powerBar"></i></div></div>
+      <canvas id="gameCanvas" width="800" height="480"></canvas>
+      <div class="touch-controls" aria-label="Controles táctiles">
+        <div class="touch-pad">
+          <button data-dir="up">▲</button>
+          <div><button data-dir="left">◀</button><button data-dir="down">▼</button><button data-dir="right">▶</button></div>
+        </div>
+        <button class="attack-btn" data-dir="attack">⚡</button>
+      </div>
+      <div class="game-note">RECUPERA LOS DATOS · EVITA O CAPTURA A LOS AGENTES · P PAUSA · R REINICIA · M AUDIO · F2 DEBUG</div>
+    </section>
+
+    <section id="editor" class="panel hidden">
+      <h2>EDITOR // MAPA TÁCTICO</h2>
+      <div class="editorTools">
+        <button data-tile="0">SUELO</button><button data-tile="1">MURO</button><button data-tile="2">FRAGMENTO</button>
+        <button data-tile="3">PORTAL</button><button data-tile="4">INICIO</button><button data-tile="5">ENEMIGO</button>
+      </div>
+      <canvas id="editorCanvas" width="800" height="480"></canvas>
+      <div class="editorActions"><button id="saveLevel">GUARDAR</button><button id="loadLevel">CARGAR</button><button id="clearLevel">LIMPIAR</button><button data-action="menu">VOLVER</button></div>
+      <p id="editorInfo">Selecciona un elemento y pinta la cuadrícula.</p>
+    </section>
+
+    <section id="howto" class="panel hidden"><h2>CÓMO JUGAR</h2><div class="help-grid">
+      <div><b>OBJETIVO</b><p>Recolecta todos los fragmentos para avanzar. Los fragmentos brillantes otorgan más puntos y activan energía.</p></div>
+      <div><b>AGENTES</b><p>Alpha persigue. Beta anticipa tu dirección. Gamma calcula intercepción. Delta cambia entre distancia y persecución.</p></div>
+      <div><b>ENERGÍA</b><p>Con energía activa puedes capturar a los agentes. Al capturarlos desaparecen, esperan unos segundos y reaparecen en una posición aleatoria.</p></div>
+      <div><b>PORTALES</b><p>Usa los portales para escapar y crear rutas más rápidas por el mapa. Cada nivel cambia el laberinto y el sector.</p></div><div><b>SPRITES</b><p>El operador cambia de pose al caminar, correr, atacar y recibir daño. La dirección izquierda usa reflejo horizontal y la derecha conserva el sprite original.</p></div>
+    <div><b>REAPARICIÓN</b><p>Cuando capturas a un agente, desaparece durante unos segundos y reaparece en una posición aleatoria. Mientras aparece no puede dañarte.</p></div></div><button data-action="menu">VOLVER</button></section>
+    <section id="ranking" class="panel hidden"><h2>RANKING // OPERADORES</h2><ol id="rankingList"></ol><button data-action="menu">VOLVER</button></section>
+    <section id="credits" class="panel hidden"><h2>CYBER MAZE</h2><p>Proyecto académico de programación web, algoritmos, IA, animación y persistencia.</p><p>Los cuatro agentes utilizan estrategias diferenciadas y máquinas de estados.</p><button data-action="menu">VOLVER</button></section>
+    <section id="pause" class="panel overlay hidden"><h2>PAUSA</h2><button data-action="resume">CONTINUAR</button><button data-action="restart">REINICIAR</button><button data-action="menu">MENÚ</button></section>
+    <section id="gameover" class="panel overlay hidden"><h2 id="finalTitle">GAME OVER</h2><p id="finalScore"></p><p id="finalStats"></p><button data-action="restart">REINTENTAR</button><button data-action="menu">MENÚ</button></section>
+  </main>
+  <script src="js/cybermaze.js"></script>
+</body>
+</html>

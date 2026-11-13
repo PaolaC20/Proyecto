@@ -1,0 +1,1 @@
+import {TILE} from '../utils/Constants.js';export class Fragment{constructor(x,y){this.x=x*TILE+16;this.y=y*TILE+16;this.collected=false}draw(ctx,t){if(this.collected)return;ctx.fillStyle='#8fe9ff';const s=4+Math.sin(t*7+this.x)*2;ctx.fillRect(this.x-s/2,this.y-s/2,s,s)}}

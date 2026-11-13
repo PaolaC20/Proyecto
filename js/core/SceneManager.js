@@ -1,0 +1,1 @@
+export class SceneManager{constructor(){this.scenes=new Map();this.current=null}add(name,scene){this.scenes.set(name,scene)}go(name,data){this.current?.exit?.();this.current=this.scenes.get(name);this.current?.enter?.(data)}update(dt){this.current?.update?.(dt)}draw(ctx){this.current?.draw?.(ctx)}}

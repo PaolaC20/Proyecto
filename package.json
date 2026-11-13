@@ -1,0 +1,8 @@
+{
+  "name": "cyber-maze-pursuit-protocol",
+  "version": "3.0.0",
+  "description": "Cyber Maze: Pursuit Protocol - videojuego web servido con Node.js",
+  "type": "module",
+  "main": "server/server.js",
+  "scripts": {"start": "node server/server.js"}
+}

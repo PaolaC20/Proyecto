@@ -1,0 +1,1 @@
+export class GameLoop{constructor(update,draw){this.update=update;this.draw=draw;this.last=0;this.fps=60;this.running=false}start(){this.running=true;requestAnimationFrame(t=>this.frame(t))}frame(t){if(!this.running)return;const dt=Math.min((t-this.last)/1000||0,0.05);this.last=t;this.fps=1/Math.max(dt,0.001);this.update(dt);this.draw();requestAnimationFrame(x=>this.frame(x))}}

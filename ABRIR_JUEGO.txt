@@ -1,0 +1,22 @@
+CYBER MAZE: PURSUIT PROTOCOL
+
+EJECUCION CON NODE.JS
+1. Instala Node.js 18 o superior.
+2. Descomprime el proyecto completo.
+3. Abre la carpeta CyberMazeFinal.
+4. Ejecuta ABRIR_JUEGO.bat, o abre una terminal en esa carpeta y ejecuta: npm start
+5. Abre http://localhost:3010
+
+La version actual utiliza Node.js para servir el juego y sus recursos por HTTP.
+La cancion principal se encuentra en assets/audio/cybermaze-theme.mp3 y se reproduce al pulsar INICIAR MISION.
+
+CONTROLES
+WASD / FLECHAS = mover
+ESPACIO / ENTER = atacar/accion
+P = pausa
+R = reiniciar
+F2 = debug
+M = audio
+
+IMPORTANTE
+No cambies de lugar las carpetas assets, css, js ni server.

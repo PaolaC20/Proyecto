@@ -1,0 +1,1 @@
+export class AssetManager{constructor(){this.images=new Map()}async load(path){if(this.images.has(path))return this.images.get(path);const img=new Image();img.src=path;await img.decode().catch(()=>{});this.images.set(path,img);return img}get(path){return this.images.get(path)}}

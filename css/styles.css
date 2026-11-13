@@ -1,0 +1,427 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: Consolas, "Courier New", monospace;
+  background: #03060d;
+  color: #dffbff
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 10%, #10243a 0, #050a12 45%, #010308 100%);
+  overflow: auto
+}
+
+#app {
+  width: min(920px, 96vw);
+  min-height: 620px;
+  position: relative
+}
+
+.panel,
+.screen {
+  background: linear-gradient(145deg, #07111d, #030710);
+  border: 1px solid #2b9bb5;
+  box-shadow: 0 0 35px #00bde72a, inset 0 0 30px #001a24;
+  border-radius: 14px
+}
+
+.panel {
+  padding: 32px;
+  text-align: center;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+}
+
+.hidden {
+  display: none !important
+}
+
+.brand {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 7px;
+  text-shadow: 0 0 15px #54eaff
+}
+
+.subtitle {
+  font-size: 18px;
+  letter-spacing: 5px;
+  color: #a0c9d8;
+  margin: 10px
+}
+
+.intro {
+  font-size: 12px;
+  color: #55e6ff;
+  margin: 25px 0
+}
+
+.panel button {
+  width: 280px;
+  margin: 6px;
+  padding: 13px 18px;
+  background: #071b2a;
+  border: 1px solid #37d4f1;
+  color: #dffcff;
+  border-radius: 5px;
+  font-family: inherit;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer
+}
+
+.panel button:hover,
+.editorTools button.selected {
+  background: #103e54;
+  box-shadow: 0 0 15px #26dfff55
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+  font-size: 10px;
+  color: #6b9cad
+}
+
+.controls span {
+  border: 1px solid #1c3b49;
+  padding: 5px 8px
+}
+
+.screen {
+  padding: 10px;
+  position: relative
+}
+
+.screen canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  background: #050b12;
+  border-radius: 8px
+}
+
+.screen #hud {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 5px 8px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #c9f7ff
+}
+
+.game-note {
+  text-align: center;
+  color: #6fa1b1;
+  font-size: 10px;
+  padding: 8px
+}
+
+.editorTools,
+.editorActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 12px
+}
+
+.editorTools button,
+.editorActions button {
+  width: auto;
+  margin: 0;
+  padding: 8px 11px
+}
+
+.panel h2 {
+  margin-bottom: 22px;
+  letter-spacing: 3px;
+  color: #8fefff
+}
+
+.panel p {
+  max-width: 650px;
+  line-height: 1.7;
+  color: #9db7c2;
+  margin: 8px
+}
+
+.panel ol {
+  width: min(500px, 90%);
+  text-align: left;
+  line-height: 2;
+  color: #b8eff8;
+  margin-bottom: 25px
+}
+
+.overlay {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 0;
+  height: 100%;
+  background: #020711eF;
+  backdrop-filter: blur(4px)
+}
+
+#editorCanvas {
+  max-width: 100%;
+  image-rendering: pixelated;
+  border: 1px solid #24748a
+}
+
+#editorInfo {
+  font-size: 12px;
+  color: #58dff7
+}
+
+/* --- UI mejorada --- */
+.name-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 8px;
+  color: #65dff7;
+  font-size: 11px;
+  letter-spacing: 2px
+}
+
+.name-field input {
+  width: 180px;
+  padding: 9px 11px;
+  background: #020913;
+  border: 1px solid #286b7e;
+  color: #dffcff;
+  border-radius: 5px;
+  font: inherit;
+  letter-spacing: 1px;
+  text-transform: uppercase
+}
+
+.name-field input:focus {
+  outline: none;
+  border-color: #5ceaff;
+  box-shadow: 0 0 12px #25dfff44
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+#hud {
+  flex-wrap: wrap
+}
+
+#hud span {
+  white-space: nowrap
+}
+
+.power-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px 8px;
+  font-size: 9px;
+  color: #6fa1b1;
+  letter-spacing: 1px
+}
+
+.power-track {
+  height: 7px;
+  flex: 1;
+  background: #07101b;
+  border: 1px solid #244453;
+  border-radius: 9px;
+  overflow: hidden
+}
+
+#powerBar {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #46dfff, #d879ff);
+  box-shadow: 0 0 10px #45eaff;
+  transition: width .08s linear
+}
+
+.touch-controls {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 6px
+}
+
+.touch-pad {
+  text-align: center
+}
+
+.touch-controls .attack-btn {
+  font-size: 18px
+}
+
+.touch-controls button {
+  width: 42px;
+  height: 34px;
+  margin: 2px;
+  background: #071b2a;
+  border: 1px solid #37d4f1;
+  color: #dffcff;
+  border-radius: 5px;
+  font: 700 15px monospace;
+  touch-action: none
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 650px;
+  width: 100%;
+  margin-bottom: 25px
+}
+
+.help-grid div {
+  border: 1px solid #1b4554;
+  background: #06101a;
+  padding: 15px;
+  text-align: left;
+  border-radius: 7px
+}
+
+.help-grid b {
+  color: #5eeaff;
+  letter-spacing: 2px;
+  font-size: 11px
+}
+
+.help-grid p {
+  font-size: 11px !important;
+  margin: 8px 0 0 !important
+}
+
+@media(max-width:700px) {
+  .brand {
+    font-size: 34px
+  }
+
+  .panel {
+    padding: 20px
+  }
+
+  .help-grid {
+    grid-template-columns: 1fr
+  }
+
+  .touch-controls {
+    display: block
+  }
+
+  .screen #hud {
+    font-size: 10px
+  }
+
+  .game-note {
+    font-size: 8px
+  }
+}
+
+/* Botón táctil de ataque */
+.touch-controls .attack-btn {
+  width: 54px;
+  height: 54px;
+  margin: 0;
+  border-color: #ffcf5a;
+  color: #ffcf5a;
+  box-shadow: 0 0 12px #ffcf5a22;
+}
+
+
+/* MODO PANTALLA COMPLETA DEL JUEGO */
+#game:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: clamp(8px, 1.5vw, 18px);
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #02050b;
+}
+
+#game:fullscreen #hud {
+  width: min(1200px, 96vw);
+}
+
+#game:fullscreen canvas {
+  width: auto;
+  height: auto;
+  max-width: 96vw;
+  max-height: calc(100vh - 100px);
+  aspect-ratio: 800/480;
+}
+
+#game:fullscreen .game-note {
+  width: min(1200px, 96vw);
+}
+
+@media (max-aspect-ratio: 5/3) {
+  #game:fullscreen canvas {
+    max-height: calc(100vh - 115px);
+    max-width: 94vw;
+  }
+}
+
+/* --- PRUEBA DE AUDIO --- */
+#musicTestStatus {
+  min-width: 105px;
+  text-align: left;
+  font-size: 9px;
+  color: #77a9b7;
+  letter-spacing: 1px
+}
+
+#bgMusic {
+  display: block;
+  width: 100%;
+  height: 36px;
+  margin-top: 10px;
+  filter: none
+}
+
+#bgMusic {
+  display: block;
+  width: 100%;
+  height: 36px;
+  margin-top: 10px;
+  filter: none
+}

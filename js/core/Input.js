@@ -1,0 +1,1 @@
+export class Input{constructor(){this.keys=new Set();this.just=new Set();addEventListener('keydown',e=>{if(!this.keys.has(e.key))this.just.add(e.key);this.keys.add(e.key)});addEventListener('keyup',e=>this.keys.delete(e.key))}isDown(...keys){return keys.some(k=>this.keys.has(k))}pressed(...keys){return keys.some(k=>this.just.has(k))}endFrame(){this.just.clear()}}

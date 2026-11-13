@@ -1,0 +1,1 @@
+export class PowerUpSystem{constructor(){this.duration=7}activate(game){game.powerTimer=this.duration;for(const e of game.enemies)e.setState('FRIGHTENED');game.audio.beep(300,.2,'sawtooth')}update(game,dt){game.powerTimer=Math.max(0,game.powerTimer-dt);if(game.powerTimer===0)for(const e of game.enemies)if(e.state==='FRIGHTENED')e.setState('CHASE')}}
